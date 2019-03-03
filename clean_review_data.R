@@ -4,7 +4,9 @@ library(stringr)
 library(dplyr)
 options(stringsAsFactors = FALSE)
 
-reviews = read.csv("reviews_data_madrid_backup.csv")
+reviews = rbind(
+  read.csv("data/reviews_data_madrid_1_to_291.csv"),
+  read.csv("data/reviews_data_madrid_292_to_1547.csv"))
 
 ### ----------------------------------------
 ### BASICS
@@ -97,3 +99,6 @@ reviews$visit_date = gsub("(December|diciembre de) ", "01/12/", reviews$visit_da
 reviews$visit_date = as.Date(reviews$visit_date, "%d/%m/%Y")
 
 ### ----------------------------------------
+
+# Saving up (provisional)
+write.csv(reviews, "reviews_madrid_tmp.csv", row.names = FALSE)
