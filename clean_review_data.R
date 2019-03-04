@@ -4,9 +4,13 @@ library(stringr)
 library(dplyr)
 options(stringsAsFactors = FALSE)
 
+list.files("data")[grepl("reviews_data_madrid_\\d", list.files("data"))]
+
 reviews = rbind(
   read.csv("data/reviews_data_madrid_1_to_291.csv"),
-  read.csv("data/reviews_data_madrid_292_to_1547.csv"))
+  read.csv("data/reviews_data_madrid_292_to_1547.csv"),
+  read.csv("data/reviews_data_madrid_1548_to_3177.csv"),
+  read.csv("data/reviews_data_madrid_3178_to_7805.csv"))
 
 ### ----------------------------------------
 ### BASICS
@@ -26,7 +30,8 @@ reviews = data.frame(
 )
 
 # Is it a translation?
-reviews$translation = grepl("(Mejorar traducción)|(Puntuar traducción)", reviews$review)
+reviews$translation = grepl("(Mejorar traducción)|(Puntuar traducción)|(Google Translation)",
+  reviews$review)
 reviews = subset(reviews, !translation)
 # NOTE! IT PROBABLY MAKES SENSE TO CHECK THIS WITH THE RESTAURANT DATA AND SEE IF NO. OF
 # REVIEWS MATCH. OTHERWISE PERHAPS TRY TO EXTRACT USERNAME AND LOOK FOR DUPLICATES?

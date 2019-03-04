@@ -5,7 +5,7 @@ library(dplyr)
 library(scales)
 library(tidyr)
 
-reviews = read.csv("reviews_madrid_tmp.csv")
+reviews = read.csv("reviews_madrid_tmp.csv");nrow(reviews)
 reviews = reviews %>% select(url, language, review_date)
 
 # Date class
@@ -19,7 +19,7 @@ ggplot(reviews, aes(x = review_date)) +
   geom_histogram(binwidth=90, colour="white") +
   scale_x_date(labels = date_format("%Y"),
     breaks = "1 year", limits = c(min(reviews$review_date), max(reviews$review_date))) +
-  theme_classic()
+  theme_classic() + labs(x = "", y = "Total monthly number of reviews\n")
 dev.off()
 
 pdf("plots/reviews_date_lang.pdf", width = 7, height = 7)
@@ -27,8 +27,20 @@ ggplot(reviews, aes(x = review_date))+#, group = factor(language), fill = factor
   geom_histogram(binwidth=90, color = "white") +
   scale_x_date(labels = date_format("%Y"),
     breaks = "1 year", limits = c(min(reviews$review_date), max(reviews$review_date))) +
-  theme_classic() +
+  theme_classic() + labs(x = "", y = "Total monthly number of reviews\n") +
   facet_wrap(~ language, ncol = 1)
+dev.off()
+
+
+pdf("plots/reviews_date_lang2.pdf", width = 7, height = 7)
+ggplot(reviews, aes(x = review_date, group = factor(language), fill = factor(language))) +
+  geom_histogram(binwidth=90, color = "white") +
+  scale_x_date(labels = date_format("%Y"),
+    breaks = "1 year", limits = c(min(reviews$review_date), max(reviews$review_date))) +
+  theme_classic() +
+  labs(x = "", y = "Total monthly number of reviews\n", fill = "Language of review") +
+  theme(legend.position = c(0.15,0.9)) +
+  scale_fill_manual(labels = c("English", "Spanish"), values = c("#0e80d8", "#ed4747"))
 dev.off()
 
 ### DISTRIBUTION OF RESTAURANTS BY % ENGLISH OVER TIME
