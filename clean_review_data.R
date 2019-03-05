@@ -1,4 +1,3 @@
-# scp fvillami@icr-s02.ethz.ch:/home/fvillami/tripadvisor/files/madrid/reviews_data_madrid_backup.csv Documents/Academic/courses/SocDataScience_feb19/project
 setwd("~/Documents/Academic/courses/SocDataScience_feb19/project")
 library(stringr)
 library(dplyr)
@@ -10,7 +9,8 @@ reviews = rbind(
   read.csv("data/reviews_data_madrid_1_to_291.csv"),
   read.csv("data/reviews_data_madrid_292_to_1547.csv"),
   read.csv("data/reviews_data_madrid_1548_to_3177.csv"),
-  read.csv("data/reviews_data_madrid_3178_to_7805.csv"))
+  read.csv("data/reviews_data_madrid_3178_to_7805.csv"),
+  read.csv("data/reviews_data_madrid_7806_to_10464.csv"))
 
 ### ----------------------------------------
 ### BASICS
@@ -105,5 +105,5 @@ reviews$visit_date = as.Date(reviews$visit_date, "%d/%m/%Y")
 
 ### ----------------------------------------
 
-# Saving up (provisional)
-write.csv(reviews, "reviews_madrid_tmp.csv", row.names = FALSE)
+# Saving up
+write.csv(reviews, "data/reviews_rest_madrid.csv", row.names = FALSE)

@@ -5,7 +5,12 @@ library(dplyr)
 library(scales)
 library(tidyr)
 
-reviews = read.csv("reviews_madrid_tmp.csv");nrow(reviews)
+# NOTE
+# Para el appendix habria que hacer un pequeño descriptive de los datos de reviews
+# y posibles biases etc. Distribution of no. reviews by restaurant, correlation between
+# % reviews in Spanish and total number of reviews, etc ...
+
+reviews = read.csv("data/reviews_rest_madrid.csv")
 reviews = reviews %>% select(url, language, review_date)
 
 # Date class
