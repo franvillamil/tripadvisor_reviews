@@ -67,12 +67,12 @@ for(i in 1:nrow(rest_list)){
   # every 100 restaurants, save
   if(i %in% seq(100, 10000, 100)){
     print(paste0("Saving backup (", i, ") ---------------------------------------"))
-    write.csv(reviews_data, "files/madrid/reviews_data_madrid_backup.csv", row.names = FALSE)
+    write.csv(reviews_data, "files/madrid/reviews_raw_madrid_backup.csv", row.names = FALSE)
   }
 
 }
 
 # Save the whole thing
-write.csv(reviews_data, "files/madrid/reviews_data_madrid.csv", row.names = FALSE)
+write.csv(reviews_data, "files/madrid/reviews_raw_madrid.csv", row.names = FALSE)
 # And delete backups
-file.remove("files/madrid/reviews_data_madrid_backup.csv")
+file.remove("files/madrid/reviews_raw_madrid_backup.csv")
