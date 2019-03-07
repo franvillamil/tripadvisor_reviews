@@ -4,18 +4,19 @@
 
 ##### Scraping & dataset creation
 
-* `scrap_restaurants_madrid.R`: Scraps the list of restaurants from the [TripAdvisor Madrid list](https://tripadvisor.com/Restaurants-g187514-Madrid.html), saving restaurant-level data, i.e. name, rank, URL, address, total number of reviews, number of reviews in English and Spanish, and type/price range (output = `rest_data_madrid.csv`).
+* `scrap_restaurants_madrid.R`: Scraps the list of restaurants from the [TripAdvisor Madrid list](https://tripadvisor.com/Restaurants-g187514-Madrid.html), saving restaurant-level data, i.e. name, rank, URL, address, total number of reviews, number of reviews in English and Spanish, and type/price range.
 
-* `scrap_reviews_madrid.R`: Using the list of restaurants from above, extracts all the reviews in Spanish and English and saves each whole page as raw text, alogn with the restaurant URL and the language (output = `reviews_raw_madrid.csv`).
+* `scrap_reviews_madrid.R`: Using the list of restaurants from above, extracts all the reviews in Spanish and English and saves each whole page as raw text, alogn with the restaurant URL and the language.
 
-* `clean_review_data.R` : Takes the reviews raw data and cleans it up, putting each review in separated rows, removing duplicated ones (translations) and extracting the review and visit dates from the text (output = `reviews_rest_madrid.csv`).
+* `clean_review_data.R` : Takes the reviews raw data and cleans it up, putting each review in separated rows, removing duplicated ones (translations) and extracting the review and visit dates from the text.
 
-* `geocoding.R`: Geocodes the exact location of each restaurant following their address, using [`ggmap`](https://github.com/dkahle/ggmap),  (output = `rest_madrid_geocoded.csv`)
+* `geocoding.R`: Geocodes the exact location of each restaurant following their address, using [`ggmap`](https://github.com/dkahle/ggmap), and locates the coordinate points in each *barrio* of Madrid.
 
 * `data_aggregation.R`: Aggregates review and restaurant data by *barrio* in three different points in time (Dec18, Jun17 & Nov15), along with the number of AirBnB listings two months before, and the number of hotels and hostels (only current data).
 
+*Note: all these scripts must be run in this particular order.*
 
-##### Analyses
+##### Analyses & plotting
 
 * `reviews_eda.R` :
 * `spatial_plots.R` :
