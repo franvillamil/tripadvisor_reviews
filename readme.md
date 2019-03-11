@@ -6,7 +6,7 @@ To get an approximate measure of international vs local visitors, I scrap all re
 For the data on AirBnB listings, I rely on [Inside AirBnB](http://insideairbnb.com).
 Below there are all the R scripts used to collect and manipulate the data, as well as the analyses included in the report.
 
-[ First results - PDF](./writing/report.pdf)
+[First results - PDF](./writing/report.pdf)
 
 #### R Scripts
 
