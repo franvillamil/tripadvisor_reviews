@@ -1,7 +1,13 @@
 setwd("~/Documents/Academic/courses/SocDataScience_feb19/project")
+library(ggmap)
 library(rgdal)
 library(scales)
 library(RColorBrewer)
+
+# check: https://github.com/dkahle/ggmap
+# mad_stamen = get_stamenmap(
+#   c(left = -3.75, bottom = 40.38, right = -3.67, top = 40.47),
+#   zoom = 15, maptype = "toner-lite") %>% ggmap()
 
 data = read.csv("data/rest_madrid_geocoded.csv")
 data$reviews_spa_sh = data$reviews_spa / data$reviews_all
